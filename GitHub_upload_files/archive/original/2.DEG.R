@@ -1,0 +1,57 @@
+setwd('/JJGene/data/xuwj/麦门冬汤+五味消毒饮_非小细胞肺癌_EGFR-TKI耐药_5+/')
+dir.create('2.DEG')
+setwd('2.DEG/')
+
+####R包和函数加载####
+library(limma)
+library(edgeR)
+library(DESeq2)
+library(dplyr)
+library(ggplot2)
+library(ggrepel)
+library(ComplexHeatmap)
+library(ggpubr)
+library(tidyr)
+library(tibble)
+source("/opt/scripts_repo/bin/pheatmap1.R")
+source("/opt/scripts_repo/bin/plot_boxplot.R")
+source("/opt/scripts_repo/bin/plot_vioplot.R")
+####数据准备####
+exp1<-read.csv("../0.data/exp_combat.csv",row.names = 1,check.names = F)#设置了check.names=F就不会把列名里的-换成.了
+group_list<-read.csv("../0.data/groupinfo2.csv",row.names = 1)
+colnames(exp1) <- gsub('[.]','-',colnames(exp1))
+table(colnames(exp1)==group_list$sample)
+exp1=exp1[,group_list$sample]
+
+group1=group_list$group
+names(group1)=colnames(exp1)
+table(group1)
+# group1
+# control   tumor 
+# 36     569
+colors <- c("#1E90FF","#F08080","#FFFF00",
+            "#808000","#FF00FF","#FA8072","#7B68EE","#9400D3","#800080","#A0522D","#D2B48C","#D2691E","#87CEEB","#40E0D0","#5F9EA0",
+            "#FF1493","#0000CD","#008B8B","#FFE4B5","#8A2BE2","#228B22","#E9967A","#4682B4","#32CD32","#F0E68C","#FFFFE0","#EE82EE",
+            "#FF6347","#6A5ACD","#9932CC","#8B008B","#8B4513","#DEB887")
+####参数####
+exp=exp1
+group=group1
+case="tumor"
+control="control"
+P="p.adj"
+P_value=0.05
+logFC_value=0.5
+colors=colors
+is_count=F
+feature_type="基因"
+lab = c("gene", "Expression Level")
+flip = F
+####运行####
+source("/opt/scripts_repo/bin/差异分析.R")
+# down   no   up 
+# 1677 7238 1628 
+####报告####
+source("/opt/scripts_repo/bin/差异分析中文报告.R")
+
+
+

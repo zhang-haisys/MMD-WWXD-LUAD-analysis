@@ -1,0 +1,11 @@
+{
+  "original_hashes_match": true,
+  "modules": 16,
+  "helper_files_missing": 18,
+  "packages_directly_referenced": 51,
+  "R_runtime_available": false,
+  "analysis_executed": false,
+  "scope": "Source integrity, UTF-8 encoding, inventory and path transformation only; no R syntax/runtime or numerical verification.",
+  "unconverted_active_legacy_absolute_paths": [],
+  "lexical_delimiter_check": "22 adapted/helper/config R files have balanced delimiters and quotes; this is not an R parser test."
+}

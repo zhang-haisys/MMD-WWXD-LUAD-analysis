@@ -1,0 +1,6 @@
+key,original_path,modules,status
+resource_032493440b,/work/database/oncoPredict_Training_Data/,08,not_bundled
+resource_057bf6ea30,/work/database/Pan_cancer/TCGA_list.rda,13,not_bundled
+resource_4ae41aa186,/work/run/leiyp/0.A_A_PREPAER_SUPPORT/prepare_file/TF-Target-information.txt,12,not_bundled
+resource_4d1dbc6d3e,/work/public/ceRNA/starbase_miRNA_lncRNA_High.csv,12,not_bundled
+resource_d0c0f93a27,/work/public/ceRNA/miRNA_mRNA.csv,12,not_bundled
